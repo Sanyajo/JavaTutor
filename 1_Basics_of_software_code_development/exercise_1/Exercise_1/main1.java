@@ -8,7 +8,7 @@ public class main1{
         short b  = in.nextShort();
         short c  = in.nextShort();
         System.out.println(function(a,b,c));
-        in.close();
+        in.close(); 
     }
 
     static int function(short a, short b, short c){
