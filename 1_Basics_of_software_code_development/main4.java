@@ -26,5 +26,6 @@ public class main4 {
             buf /=1000;
             System.out.println(buf);
         }
+        in.close();
     }
 }
