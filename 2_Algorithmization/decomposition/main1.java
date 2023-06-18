@@ -31,7 +31,7 @@ class NOD{
         if(m % div == 0 && n %div ==0)
             return div;
         else
-            return find_nod(m,n,div);
+            return find_nod(m,n,div-1);
     }
 
 }
