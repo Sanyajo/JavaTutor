@@ -2,7 +2,7 @@ import java.lang.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Main {
+public class main8 {
     public static void main(String[] args) {
         Rational r1 = new Rational(3,5);
         Rational r2 = new Rational(2,6);
