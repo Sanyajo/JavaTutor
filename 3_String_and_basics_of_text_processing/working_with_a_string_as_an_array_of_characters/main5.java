@@ -1,4 +1,4 @@
-public class mian5 {
+public class main5 {
 
     public static void main(String[] args) {
         String str = " Hello   world word ";
