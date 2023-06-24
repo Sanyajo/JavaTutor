@@ -13,8 +13,8 @@ public class main3 {
     }
     public static boolean isPalindrom(String str){
         StringBuilder strBuilder = new StringBuilder(str);
-        strBuilder.reverse(); //переворачиваем строку
-        String invertedText = strBuilder.toString();//присваиваем перевернутую строку
+        strBuilder.reverse();
+        String invertedText = strBuilder.toString();
 
         return str.equalsIgnoreCase(invertedText) ;
     }
