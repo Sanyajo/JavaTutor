@@ -3,8 +3,8 @@ public class main4 {
     public static void main(String[] args) {
         String str = "информатика";
 
-        String s  = charToString(funct_copy(str));
-        System.out.println(funct_search(str, "т") + s + funct_search(str, "т"));
+        StringBuffer s = new StringBuffer().append("т").append(funct_copy(str)).append("т");
+        System.out.println(s);
     }
     public static char[] funct_copy(String str){
         int start = 3, end = 5;
