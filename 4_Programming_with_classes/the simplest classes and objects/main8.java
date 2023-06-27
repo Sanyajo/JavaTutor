@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class main9 {
+public class main8 {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         try{
