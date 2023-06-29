@@ -1,47 +1,32 @@
 import java.util.*;
 
-public class main2 {
+public class Main {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
 
-        Car c1 = new Car("BMW",30,2003,4,200,4.4);
-        c1.setScopeBack(15);
-        System.out.println("Кол бегнзина: " + c1.getScopeBack());
-        c1.drive(5);
-        System.out.println("Кол бегнзина: " + c1.getScopeBack());
-
-        System.out.println(c1.getCarBrand());
-
-        c1.getAllWhell();
-        c1.setWhell(1,30);
-        c1.getAllWhell();
-
-
+        Car c1 = new Car("BMW",4,4,17,80 );
+        System.out.println(c1.getBenzValue());
+        c1.refuel(80);
+        System.out.println(c1.getBenzValue());
+        c1.drive(2);
+        System.out.println(c1.getBenzValue());
+        
     }
 }
 
-class Engine{
+class Engine {
     private int power;
-    private double scopeEngine;
 
-    public Engine(int power, double scopeEngine){
+    public Engine(int power) {
         this.power = power;
-        this.scopeEngine = scopeEngine;
     }
 
-    public int getPower(){
+    public int getPower() {
         return power;
-    }
-    public double getScopeEngine(){
-        return scopeEngine;
     }
 
     public void setPower(int power) {
         this.power = power;
-    }
-
-    public void setScopeEngine(double scopeEngine) {
-        this.scopeEngine = scopeEngine;
     }
 }
 
@@ -61,61 +46,66 @@ class Whell{
     }
 }
 
-class Car{
-    private int scopeBack, bak;
-    private String carBrand;
-    private int yearOfManufacture;
+class Bak{
+    private int bakValue;
 
-    private Whell[] whell;
-    private Engine engine;
-
-    public Car(String carBrand, int scopeBack, int yearOfManufacture, int numWhell, int power, double scopeEngine){
-        this.carBrand = carBrand;
-        this.scopeBack = 0;
-        this.yearOfManufacture = yearOfManufacture;
-        this.bak = scopeBack;
-
-        whell = new Whell[numWhell];
-        for(int i=0; i < numWhell; ++i){
-            whell[i] = new Whell(15);
-        }
-
-        engine = new Engine(power,scopeEngine);
-
+    Bak(int bakValue){
+        this.bakValue = bakValue;
     }
 
-    public void setWhell(int index, int diametr){
-        this.whell[index].setDiameterWhell(diametr);
+    public int getBakValue(){
+        return this.bakValue;
     }
-    public void setAllWhell(int diametr){
-        for(int i=0; i < this.whell.length;++i){
-            this.whell[i].setDiameterWhell(diametr);
-        }
+
+    public void setBakValue(int value){
+        this.bakValue = value;
     }
-    public int getWhell(int index) {
-        return whell[index].getDiameterWhell();
-    }
-    public void getAllWhell(){
-        for(int i=0; i <this.whell.length; ++i){
-            System.out.println(this.whell[i].getDiameterWhell());
+
+}
+
+class Car {
+
+    protected Engine engine;
+    protected Whell[] whell;
+    protected Bak bak;
+    private int benzValue;
+    protected String markAuto;
+
+    Car(String markAuto, int power, int kollWhell, int diamWhell, int bakValue){
+        this.markAuto = markAuto;
+        this.engine = new Engine(power);
+        this.benzValue =0;
+        this.bak = new Bak(bakValue);
+        this.whell = new Whell[kollWhell];
+        for(int i=0; i < kollWhell; ++i){
+            this.whell[i] = new Whell(diamWhell);
         }
     }
 
-    public int getScopeBack(){
-        return scopeBack;
+    public String getMarkAuto(){
+        return this.markAuto;
     }
-    public void setScopeBack(int liters){
-        if(liters > (this.bak - this.scopeBack)  || liters>this.bak){
-            this.scopeBack = this.bak;
+
+    public void refuel(int kollBenz){
+        if(kollBenz > (this.bak.getBakValue() - this.benzValue)){
+            System.out.println("Вы заправились на: " + (kollBenz-(this.bak.getBakValue() - this.benzValue)) + " тк больше не влезло");
+            this.benzValue = this.bak.getBakValue();
         }else{
-            this.scopeBack = liters;
+            this.benzValue = kollBenz;
+        }
+    }
+
+    public int getBenzValue(){
+        return this.benzValue;
+    }
+
+    public void getWhellInfo(){
+        for(int i = 0; i <whell.length; ++i){
+            System.out.println("Диаметр " + (i+1)+ " колеса равен: " + this.whell[i].getDiameterWhell());
         }
     }
 
     public void drive(int km){
-        this.scopeBack -= 10*km;
-    }
-    public String getCarBrand(){
-        return this.carBrand;
+        this.benzValue -= (this.engine.getPower()*2*km);
     }
 }
